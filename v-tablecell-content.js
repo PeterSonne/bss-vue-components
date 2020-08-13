@@ -1,4 +1,4 @@
-// general purpose prepren icon
+// general purpose prepended tablecell
 Vue.component("v-tablecell-content", {
   name: "v-tablecell-content",
   template:
