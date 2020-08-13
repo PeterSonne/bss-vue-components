@@ -4,9 +4,9 @@ Vue.component("v-tablecell-content", {
   template:
     '<div> \
       <div style="height: 16px; width: 16px;"> \
-        <v-img :src="`${url}${getImageSrc}`" :width="width" :height="height" :title="value[key]"></v-img> \
+        <v-img :src="`${url}${getImageSrc}`" :width="width" :height="height" :title="value[displayKey]"></v-img> \
       </div> \
-      {{value[key]}} \
+      {{value[displayKey]}} \
     </div>',
   props: {
     height: {
@@ -21,7 +21,11 @@ Vue.component("v-tablecell-content", {
       type: Object,
       default: () => ({}),
     },
-    key: {
+    valueKey: {
+      type: String,
+      default: "identifier",
+    },
+    displayKey: {
       type: String,
       default: "title",
     },
@@ -36,8 +40,8 @@ Vue.component("v-tablecell-content", {
   },
   computed: {
     getImageSrc: function () {
-      if (this.imageList.hasOwnProperty(this.value[this.key])) {
-        return this.imageList[this.value[this.key]];
+      if (this.imageList.hasOwnProperty(this.value[this.valueKey])) {
+        return this.imageList[this.value[this.valueKey]];
       } else if (this.imageList.hasOwnProperty("default")) {
         return this.imageList.default;
       } else {
