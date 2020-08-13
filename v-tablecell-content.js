@@ -6,7 +6,7 @@ Vue.component("v-tablecell-content", {
       <div style="height: 16px; width: 16px;"> \
         <v-img :src="`${url}${getImageSrc}`" :width="width" :height="height" :title="value[key]"></v-img> \
       </div> \
-      {{value}} \
+      {{value[key]}} \
     </div>',
   props: {
     height: {
